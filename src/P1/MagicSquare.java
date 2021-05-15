@@ -38,7 +38,7 @@ public class MagicSquare {
 		}
 		try {
 			OutputStreamWriter fout = null;//定义一个流 。
-			fout = new OutputStreamWriter(new FileOutputStream("D:\\JAVA\\sourse\\Lab1-1190201104\\src\\txt\\6.txt"),"GBK");
+			fout = new OutputStreamWriter(new FileOutputStream("D:\\JAVA\\sourse\\Lab1-1190201104\\src\\P1\\txt\\6.txt"),"GBK");
 //			FileOutputStream fout = new FileOutputStream("D:\\JAVA\\sourse\\Lab1-1190201104\\src\\txt\\txt.6");
 //			OutputStreamWriter writer = new OutputStreamWriter(fout);
 			for (i = 0; i < n; i++) 
@@ -64,7 +64,7 @@ public class MagicSquare {
 		   int j=0;
 		   try//按行读入字符串，s中存放的是每一行的内容
 		    {
-		    	FileInputStream fin=new FileInputStream("D:\\JAVA\\sourse\\Lab1-1190201104\\src\\txt\\"+fileName);
+		    	FileInputStream fin=new FileInputStream("D:\\JAVA\\sourse\\Lab1-1190201104\\src\\P1\\txt\\"+fileName);
 		    	InputStreamReader reader = new InputStreamReader(fin);
 		    	BufferedReader buffReader = new BufferedReader(reader);		    	
 		    	String strtmp;
@@ -95,16 +95,29 @@ public class MagicSquare {
 			  }
 			  
 		    }
-		    int width=width0[0];//如果运行到这里那肯定是行列数量相等		  
+		    int width=width0[0];//如果运行到这里那肯定是行列数量相等	
+		    
 		    String [][]ss= new String[length][width];
 		    int [][]num = new int[length][width];
 		    for(i=0;s[i]!=null;i++) 
 		    {
 			  ss[i]=s[i].split("\t");//用二维字符串数组记录数据
 		    }		  		  
-		    for(i=0;i<ss.length;i++)
-		    {   for(j=0;j<ss[i].length;j++)
-	      		{
+		    for(i=0;i<length;i++)
+		    {   for(j=0;j<width;j++)
+	      		{  
+		    	   if(ss[i][j].contains(" ")==true)
+		    	   { 
+		    		 System.out.print("存在空格");
+		    	   	 ret=false;
+					 return ret;  
+		    	   }
+		    	   else if(ss[i][j].contains(".")==true)
+		    	   {
+		    		   System.out.print("存在非int型整数");
+			    	   ret=false;
+					   return ret; 
+		    	   }		    		   
 	    	       num[i][j]=Integer.valueOf(ss[i][j]);//把字符串转化为数字
 	    	       if(num[i][j]<0)
 	    	       {   
