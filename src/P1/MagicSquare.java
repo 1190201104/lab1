@@ -174,6 +174,7 @@ public class MagicSquare {
 		int n;
 		boolean equal;//把名字存在数组中，轮流放入判断
 		Scanner in = new Scanner(System.in);
+		System.out.print("请先输入第六个矩阵的边长：");
 		n=in.nextInt();
 		generateMagicSquare(n);		
 		for(int i=0;i<num;i++)
